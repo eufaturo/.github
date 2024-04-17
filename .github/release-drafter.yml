@@ -1,0 +1,44 @@
+template: |
+  $CHANGES
+
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+change-template: '- $TITLE ([#$NUMBER]($URL))'
+change-title-escapes: '\<*_&#`'
+categories:
+  - title: Added
+    labels:
+      - 'changelog:added'
+  - title: Changed
+    labels:
+      - 'changelog:changed'
+  - title: Removed
+    labels:
+      - 'changelog:removed'
+  - title: Fixed
+    labels:
+      - 'changelog:fixed'
+  - title: Security
+    labels:
+      - 'changelog:security'
+  - title: Dependencies
+    labels:
+      - 'changelog:dependencies'
+  - title: Internal
+    labels:
+      - 'changelog:internal'
+exclude-labels:
+  - 'skip-changelog'
+version-resolver:
+  major:
+    labels:
+      - 'changelog:removed'
+  minor:
+    labels:
+      - 'changelog:added'
+  patch:
+    labels:
+      - 'changelog:fixed'
+      - 'changelog:security'
+  default: patch
